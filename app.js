@@ -21,18 +21,27 @@ weatherApp.config(function ($routeProvider) {
 //SERVICES
 
 weatherApp.service('cityService', function() {
-  this.city = "Skopje, SK";
+  this.cityId = 524901;
 });
 
 //CONTROLLERS
 weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
-  $scope.city = cityService.city;
+  $scope.cityId = cityService.cityId;
 
   $scope.$watch('city', function() {
-    cityService.city = $scope.city;
+    cityService.cityId = $scope.cityId;
   });
 }]);
 
-weatherApp.controller('forecastController', ['$scope', 'cityService', function($scope, cityService) {
-  $scope.city = cityService.city;
+weatherApp.controller('forecastController', ['$scope', '$resource', 'cityService',
+function($scope, $resource, cityService) {
+
+  $scope.cityId = cityService.cityId;
+
+  $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast", {
+    callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
+
+    $scope.weatherResult = $scope.weatherAPI.get({ id: $scope.cityId });
+
+    console.log($scope);
 }]);
