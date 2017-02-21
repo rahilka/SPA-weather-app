@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us" ng-app="weatherApp">
   <head>
     <title>AngularJS Weather Forecast SPA</title>
     <meta http-equiv="X-UA-Compatible" vontent="IE=Edge" />
@@ -17,11 +17,11 @@
 
     <!-- load Angular via CDN -->
     <!-- Angular -->
-    <script src="https://code.angularjs.org/1.6.1/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.2/angular.min.js"></script>
     <!-- Routing for SPA -->
-    <script src="https://code.angularjs.org/1.6.1/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.2/angular-route.min.js"></script>
     <!-- Use to get some data from the Internet -->
-    <script src="https://code.angularjs.org/1.6.1/angular-resource.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.2/angular-resource.min.js"></script>
     <!-- Reference to my app.js file -->
     <script src="app.js"></script>
 
@@ -45,6 +45,8 @@
       </header>
 
       <div class="container">
+
+          <div ng-view></div>
 
       </div>
   </body>
